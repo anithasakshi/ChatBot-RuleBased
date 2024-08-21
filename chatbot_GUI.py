@@ -20,13 +20,13 @@ Take ibuprofen as directed by your healthcare provider to reduce fever and allev
 Avoid consuming alcohol while taking ibuprofen, as it can increase the risk of stomach irritation and may interfere with the medication's effectiveness.'''])
 ]
 
-# Create a chatbot instance
+# Create a chatbot instance helps map the patterns and Responses
 chatbot = Chat(pairs, reflections)
 
-# Default response for unmatched patterns
+# Default response for unmatched patterns, when the pattern is not found for the question asked.
 default_responses = ["I'm still learning. Could you ask me something else?"]
 
-# Function to handle sending and receiving messages
+# Function to handle sending and receiving messages from the end user.
 def send_message():
     user_input = input_entry.get()
     input_entry.delete(0, tk.END)
@@ -42,17 +42,16 @@ def send_message():
         response = random.choice(default_responses)
     
     chat_area.insert(tk.END, "ChatBot: " + response + "\n")
-    chat_area.see(tk.END)  # Scroll to the end of the chat area
+    chat_area.see(tk.END) 
 
-# Create the main Tkinter window
+#main Tkinter window
 root = tk.Tk()
 root.title("ChatBot")
 
-# Create a scrolled text widget for displaying the chat
 chat_area = scrolledtext.ScrolledText(root, wrap=tk.WORD, width=50, height=20)
 chat_area.pack(expand=True, fill="both")
 
-# Create an entry widget for user input
+# Create an entry widget(box) for user input
 input_entry = tk.Entry(root, width=10)
 input_entry.pack(side=tk.LEFT, fill=tk.X, padx=7, pady=5, expand=True)
 
@@ -60,5 +59,4 @@ input_entry.pack(side=tk.LEFT, fill=tk.X, padx=7, pady=5, expand=True)
 send_button = tk.Button(root, text="Send", command=send_message)
 send_button.pack(side=tk.RIGHT, padx=15, pady=5)
 
-# Start the Tkinter event loop
 root.mainloop()
